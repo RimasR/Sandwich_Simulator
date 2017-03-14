@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include "stack.h"
 
-int CreateStack(Stack* stack)
+int CreateStack(Stackk* stack)
 {
-	*stack = (Stack) malloc (sizeof(Stack));
+	*stack = (Stackk) malloc (sizeof(Stackk));
     if(*stack == NULL)
      return 0;
     (*stack)->size=0;
@@ -13,7 +13,7 @@ int CreateStack(Stack* stack)
     return 1;
 }
 
-int PushElement(Stack stack, TYPE x)
+int PushElement(Stackk stack, TYPE x)
 {
     if(stack==NULL)
         return -1;
@@ -41,7 +41,7 @@ int PushElement(Stack stack, TYPE x)
     }
 }
 
-int PopElement(Stack stack, TYPE *x)
+int PopElement(Stackk stack, TYPE *x)
 {
     if(stack==NULL)
         return -1;
@@ -55,7 +55,7 @@ int PopElement(Stack stack, TYPE *x)
     return 1;
 }
 
-int CheckIfEmpty(Stack stack)
+int CheckIfEmpty(Stackk stack)
 {
     if(stack==NULL)
         return -1;
@@ -67,7 +67,7 @@ int CheckIfEmpty(Stack stack)
         return 0;
 }
 
-int Print(Stack stack)
+int Print(Stackk stack)
 {
     if(stack==NULL)
         return -1;
@@ -83,7 +83,7 @@ int Print(Stack stack)
     return 1;
 }
 
-int FreeMemory(Stack* stack)
+int FreeMemory(Stackk* stack)
 {
     if((*stack)==NULL)
         return -1;
@@ -112,7 +112,7 @@ int FreeMemory(Stack* stack)
     return 1;
 }
 
-int CheckIfFull(Stack stack)
+int CheckIfFull(Stackk stack)
 {
     if(stack==NULL)
         return -1;
@@ -127,7 +127,7 @@ int CheckIfFull(Stack stack)
         return 0;
 }
 
-int SizeOfStack (Stack stack)
+int SizeOfStack (Stackk stack)
 {
     if(stack==NULL)
         return -1;
