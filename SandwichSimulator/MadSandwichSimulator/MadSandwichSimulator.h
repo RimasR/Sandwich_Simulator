@@ -8,5 +8,6 @@
 
 void AddSandwichesToBox(int sandwichCount, int currTime, int boxCount);
 void TakeSandwichFromBox();
+int PeekFirstSandwichInBox();
 
 #endif

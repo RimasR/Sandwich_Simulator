@@ -15,10 +15,10 @@ Queue* box;
 int main()
 {
 	int currTime = 0;
-	int probOfClient = 35;
-	int sandwichCount = 2;
-	int newSandwichPeriod = 2;
-	int timeToThrow = 4;
+	int probOfClient = 50;
+	int sandwichCount = 5;
+	int newSandwichPeriod = 1;
+	int timeToThrow = 1;
 	int price = 5;
 	int workHours = 8;
 	int sum = 0;
@@ -44,8 +44,15 @@ int main()
 		}
 	}
 
-	// End of day sandwich removal
-	
+	int sandwichTime = PeekFirstSandwichInBox();
+	while(workHours - sandwichTime > timeToThrow)
+	{
+		Dequeue(box, &sandwichTime);
+		lose += price;
+		sandwichTime = PeekFirstSandwichInBox();
+	}
+
+	printf("Money got: %d, money spent: %d", sum, lose);
 
 }
 
@@ -63,6 +70,12 @@ void AddSandwichesToBox(int sandwichCount, int currTime, int boxCount)
 void TakeSandwichFromBox()
 {
 	int sandwichTime;
-	int x = Dequeue(box, &sandwichTime); 
+	int returnCode = Dequeue(box, &sandwichTime);
+}
 
+int PeekFirstSandwichInBox()
+{
+	int sandwichTime = 0;
+	int returnCode = QueuePeek(box, &sandwichTime);
+	return sandwichTime;
 }
