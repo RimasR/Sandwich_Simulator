@@ -1,0 +1,7 @@
+100//Time to simulate
+50//Probability of new client from 0 to 100
+5//How many sandwiches are made each time
+2//Time period between add of new sandwiches
+10//Sandwich life expectancy
+8//Work hours
+5//Sandwich price

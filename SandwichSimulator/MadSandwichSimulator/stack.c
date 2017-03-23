@@ -1,138 +1,112 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "stack.h"
+#include "Stack.h"
 
-int CreateStack(Stackk* stack)
+Stack stack;
+
+int create (Stack* head)
 {
-	*stack = (Stackk) malloc (sizeof(Stackk));
-    if(*stack == NULL)
-     return 0;
-    (*stack)->size=0;
-    (*stack)->status=1;    
-    (*stack)->head=NULL;
-    return 1;
+	if (head -> exists == 1) 
+		return 1;
+	else head -> top = NULL;
+	head -> exists = 1;
+	return 0;
 }
 
-int PushElement(Stackk stack, TYPE x)
+int push (Stack* head, data_type *value)
 {
-    if(stack==NULL)
-        return -1;
-    if(stack->status!=1)
-        return -1;
-    LIST temp = (LIST) malloc (sizeof(LIST));
-    if (temp==NULL)
-        return 0;
-    else
-    {
-        if (stack->head == NULL)
-        {
-            temp->data = x;
-            temp->next = NULL;
-            stack->head = temp;
-        }
-        else
-        {
-            temp->data = x;
-            temp->next = stack->head;
-            stack->head = temp;
-        }
-        stack->size++;
-        return 1;
-    }
+	if (head -> exists != 1)
+		return 1;
+	struct node *temp;
+	temp = (struct node *) malloc (sizeof (struct node));
+	if (temp == NULL)
+		return 2;
+	temp -> data = *value;
+	temp -> next = head -> top;
+	head -> top = temp;
+	return 0;
 }
 
-int PopElement(Stackk stack, TYPE *x)
+int pop (Stack* head, data_type *value)
 {
-    if(stack==NULL)
-        return -1;
-    if(stack->status!=1)
-        return -1;
-    LIST temp = stack->head;
-    *x=temp->data;
-    stack->head=temp->next;
-    free(temp);
-    stack->size--;
-    return 1;
+	if (head -> top == NULL)
+		return 2;
+	
+	if (head -> exists != 1)	
+		return 1;
+
+	struct node *temp;
+	temp = head -> top -> next;
+	*value = head -> top -> data;
+	free (head -> top);
+	head -> top = temp;
+	return 0;
 }
 
-int CheckIfEmpty(Stackk stack)
+int top (Stack* head, data_type *value)
 {
-    if(stack==NULL)
-        return -1;
-    if(stack->status!=1)
-        return -1;
-    if(stack->head==NULL)
-        return 1;
-    else
-        return 0;
+	if (head -> top == NULL)
+		return 2;
+	
+	if (head -> exists != 1)
+		return 1;
+		
+	*value = head -> top -> data;
+	return 0;
 }
 
-int Print(Stackk stack)
+int size (Stack* head, int *size)
 {
-    if(stack==NULL)
-        return -1;
-    if(stack->status!=1)
-        return -1;
+	if (head -> exists != 1)	
+		return 1;
 
-    LIST temp = stack->head;
-    while(temp != NULL)
-    {
-        printf("%d ", temp->data);
-        temp = temp->next;
-    }
-    return 1;
+	*size = 0;
+
+	if (head -> top == NULL)
+		return 2;
+		
+	struct node *temp = head -> top;
+	do
+	{
+		(*size)++;
+		temp = temp->next;
+	}while (temp != NULL);
+	return 0;
 }
 
-int FreeMemory(Stackk* stack)
+int destroy (Stack* head)
 {
-    if((*stack)==NULL)
-        return -1;
-    if((*stack)->status!=1)
-        return -1;
-    
-    if ((*stack)->head==NULL)
-    {
-        free(*stack);
-        *stack = NULL;
-        return 1;
-    }
+	if (head -> top == NULL)
+		return 2;
+		
+	struct node *temp;
+	
+	do
+	{
+		temp = head -> top;
+		head -> top = head -> top -> next;
+		free (temp);
 
-    LIST mem=(*stack)->head;
-    (*stack)->head=(*stack)->head->next;
+	} while (temp != NULL && temp -> next != NULL);
 
-    while ((*stack)->head!=NULL)
-    {
-        free(mem);
-        mem=(*stack)->head;
-        (*stack)->head=(*stack)->head->next;
-    }
-
-    free(*stack);
-    *stack=NULL;
-    return 1;
+	head -> top = NULL;
+	head -> exists = 0;
+	if (head -> top == NULL) 
+		return 0;
+	else return 1;
 }
 
-int CheckIfFull(Stackk stack)
+int empty (Stack* head)
 {
-    if(stack==NULL)
-        return -1;
-    if(stack->status!=1)
-        return -1;
-
-    LIST temp = (LIST)malloc(sizeof(LIST));
-    if (temp==NULL)
-        return 1;
-    else
-        free(temp);
-        return 0;
+	if (head -> top == NULL)
+		return 0;
+	else return 1;
 }
-
-int SizeOfStack (Stackk stack)
+int full_stack (Stack* head)
 {
-    if(stack==NULL)
-        return -1;
-    if(stack->status!=1)
-        return -1;
-
-    return stack->size;
+	struct node *temp;
+	temp = (struct node *) malloc (sizeof (struct node));
+	if (temp == NULL)
+		return 0;
+	else return 1;
 }

@@ -21,10 +21,10 @@
     <ClCompile Include="queue.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stack.c">
+    <ClCompile Include="MadSandwichSimulator.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MadSandwichSimulator.c">
+    <ClCompile Include="Stack.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -32,10 +32,10 @@
     <ClInclude Include="queue.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="stack.h">
+    <ClInclude Include="MadSandwichSimulator.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MadSandwichSimulator.h">
+    <ClInclude Include="Stack.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

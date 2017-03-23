@@ -147,12 +147,12 @@
   <ItemGroup>
     <ClCompile Include="MadSandwichSimulator.c" />
     <ClCompile Include="queue.c" />
-    <ClCompile Include="stack.c" />
+    <ClCompile Include="Stack.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MadSandwichSimulator.h" />
     <ClInclude Include="queue.h" />
-    <ClInclude Include="stack.h" />
+    <ClInclude Include="Stack.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
