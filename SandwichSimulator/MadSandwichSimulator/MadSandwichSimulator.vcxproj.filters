@@ -16,6 +16,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
+    <Text Include="solution.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="queue.c">
